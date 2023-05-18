@@ -1,0 +1,65 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: 3scale-analytics
+  namespace: red-portal
+  labels:
+    app: 3scale-analytics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 3scale-analytics
+  template:
+    metadata:
+      labels:
+        app: 3scale-analytics
+        deploymentconfig: 3scale-analytics
+    spec:
+      containers:
+        - name: 3scale-analytics
+          image: quay.io/redhat-servicemesh-apim-demo/3scale-analytics:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: prod
+            - name: PORT
+              value: '8080'
+            - name: API_GET_PLANS
+              value: Replace_with_API_Secret
+            - name: API_GET_STATS
+              value: Replace_with_API_Secret
+          imagePullPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: 3scale-analytics
+  namespace: red-portal
+  labels:
+    app: 3scale-analytics
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: 3scale-analytics
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: travels-red-ui
+  namespace: red-portal
+spec:
+  path: /
+  to:
+    kind: Service
+    name: 3scale-analytics
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+---

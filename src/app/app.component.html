@@ -1,0 +1,67 @@
+<div class="container" style="align-items: center;">
+  <table style="border: 2px; padding: 120px;">
+  <tr>
+    <td class="p-40">
+      <span class="circle blue">
+        {{updatedValues["Blue App"]["hits"]}}
+      </span>
+    </td>
+    <td class="p-40">
+      <span class="circle green">
+        {{updatedValues["Green App"]["hits"]}}
+      </span>
+    </td>
+    <td class="p-40">
+      <span class="circle red">
+        {{updatedValues["Red App"]["hits"]}}
+      </span>
+    </td>
+  </tr>
+  <tr>
+    <td class="p-40">
+      <h1>{{updatedValues["Blue App"]["amount"] | currency}}</h1>
+    </td>
+    <td class="p-40">
+      <h1>{{updatedValues["Green App"]["amount"] | currency}}</h1>
+    </td>
+    <td class="p-40">
+      <h1>{{updatedValues["Red App"]["amount"] | currency}}</h1>
+    </td>
+  </tr>
+</table>
+</div>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+
+      <span class="circle green">
+        {{updatedValues["Green App"]["hits"]}}
+      </span>
+    </div>
+    <div class="col-xs-6">
+      {{updatedValues["Green App"]["amount"] | currency}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+
+      <span class="circle red">
+        {{updatedValues["Red App"]["hits"]}}
+      </span>
+    </div>
+    <div class="col-xs-6">{{updatedValues["Red App"]["amount"] | currency}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+
+      <span class="circle blue">
+        {{updatedValues["Blue App"]["hits"]}}
+      </span>
+    </div>
+    <div class="col-xs-6">{{updatedValues["Blue App"]["amount"] | currency}}</div>
+  </div>
+
+</div>
+ -->
