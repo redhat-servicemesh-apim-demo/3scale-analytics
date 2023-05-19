@@ -42,26 +42,20 @@ export function app(): express.Express {
     maxAge: '1y'
   }));
 
-
-
-
   server.get(ANGULR_API_GET_URLS,  (req, res) => {
-
-
-        res.send({plans:API_GET_PLANS, stats: API_GET_STATS});
-
+    res.send({plans:API_GET_PLANS, stats: API_GET_STATS});
   });
 
   server.get(ANGULR_API_GET_PLANS,  (req, res) => {
     var myTimestamp = new Date().getTime().toString();
     axios.get(API_GET_PLANS,)
       .then(response => {
-        console.log("ANGULR_API_GET_PLANS", response.data)
+        console.debug("ANGULR_API_GET_PLANS", response.data)
         let jsonResult = {};
         parseString(response.data, function (err, result) {
           jsonResult  = result;
         });
-        console.log("ANGULR_API_GET_PLANS: jsonResult", jsonResult)
+        console.debug("ANGULR_API_GET_PLANS: jsonResult", jsonResult)
 
         res.send(jsonResult);
       })
@@ -75,7 +69,7 @@ export function app(): express.Express {
     var myTimestamp = new Date().getTime().toString();
     axios.get(API_GET_STATS,)
       .then(response => {
-        console.log("ANGULR_API_GET_STATS", response.data)
+        console.debug("ANGULR_API_GET_STATS", response.data)
         res.send(response.data);
       })
       .catch(error => {

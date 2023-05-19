@@ -45,7 +45,7 @@ export class AppComponent implements OnInit{
   alteredPlan = new Array;
 
   initStats() {
-    interval(500).subscribe(x => {
+    interval(8000).subscribe(x => {
       this.getStats();
     });
   }
@@ -76,10 +76,9 @@ export class AppComponent implements OnInit{
     let billedAmount = 0
     let pricer = this.alteredPlan;
     for(var x=0; x < pricer.length; x++){
-      if(usage >= pricer[x].low && usage <= pricer[x].high){
-          billedAmount = billedAmount + ((pricer[x].high - pricer[x].low + 1) * pricer[x].rate)
-      }
-      else if(usage > pricer[x].low){
+      if(usage > pricer[x].low && usage > pricer[x].high){
+        billedAmount = billedAmount + ((pricer[x].high - pricer[x].low + 1) * pricer[x].rate)
+      } else if(usage > pricer[x].low){
           billedAmount = billedAmount + ((usage - pricer[x].low + 1) * pricer[x].rate)
       }
     }
@@ -91,9 +90,11 @@ export class AppComponent implements OnInit{
     this.plans.pricing_rules.pricing_rule.forEach((plan) => {
       let tempPlan = {
         rate: plan.cost_per_unit[0],
-        low: plan.min[0],
-        high: plan.max[0],
+        low: plan.min[0]
       }
+      if(plan.max[0]!='') {
+          tempPlan["high"] = plan.max[0];
+        }
       this.alteredPlan.push(tempPlan)
     })
     console.log("this.simplifiedPlan", this.alteredPlan)
@@ -101,7 +102,7 @@ export class AppComponent implements OnInit{
   }
 
 
-  getFinalResults() {
+  /* getFinalResults() {
     this.stats.applications.forEach((application) => {
       const { name, value } = application;
       let adjustedValue = Number(value);
@@ -114,5 +115,5 @@ export class AppComponent implements OnInit{
 
       this.updatedValues[name] = adjustedValue;
     });
-  }
+  } */
 }
