@@ -21,11 +21,10 @@ export function app(): express.Express {
   const ANGULR_API_GET_URLS = '/api/getURLs';
 
   const ANGULR_API_GET_PLANS = '/api/getPlans';
-  const API_GET_PLANS = get('API_GET_PLANS').default("https://3scale-admin.apps.cluster-wzhhm.wzhhm.sandbox319.opentlc.com/admin/api/application_plans/12/pricing_rules.xml?access_token=DYLoem9wR5CkDVlN").asString();
+  const API_GET_PLANS = get('API_GET_PLANS').asString();
 
   const ANGULR_API_GET_STATS ='/api/getStats';
-  const API_GET_STATS = get('API_GET_STATS').default("https://3scale-admin.apps.cluster-wzhhm.wzhhm.sandbox319.opentlc.com/stats/services/4/top_applications.json?access_token=DYLoem9wR5CkDVlN&since=2023-05-16&period=month&metric_name=hits")
-                      .asString();
+  const API_GET_STATS = get('API_GET_STATS').asString();
 
   const session = require('express-session');
 

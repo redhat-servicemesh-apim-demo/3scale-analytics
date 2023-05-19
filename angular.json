@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "3scale-analytics": {
+    "partner-analytics": {
       "projectType": "application",
       "root": "",
       "sourceRoot": "src",
@@ -58,10 +58,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "3scale-analytics:build:production"
+              "browserTarget": "partner-analytics:build:production"
             },
             "development": {
-              "browserTarget": "3scale-analytics:build:development"
+              "browserTarget": "partner-analytics:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -69,7 +69,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "3scale-analytics:build"
+            "browserTarget": "partner-analytics:build"
           }
         },
         "test": {
@@ -91,11 +91,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "3scale-analytics:serve"
+            "devServerTarget": "partner-analytics:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "3scale-analytics:serve:production"
+              "devServerTarget": "partner-analytics:serve:production"
             }
           }
         },
@@ -122,12 +122,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "3scale-analytics:build:development",
-              "serverTarget": "3scale-analytics:server:development"
+              "browserTarget": "partner-analytics:build:development",
+              "serverTarget": "partner-analytics:server:development"
             },
             "production": {
-              "browserTarget": "3scale-analytics:build:production",
-              "serverTarget": "3scale-analytics:server:production"
+              "browserTarget": "partner-analytics:build:production",
+              "serverTarget": "partner-analytics:server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -141,12 +141,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "3scale-analytics:build:production",
-              "serverTarget": "3scale-analytics:server:production"
+              "browserTarget": "partner-analytics:build:production",
+              "serverTarget": "partner-analytics:server:production"
             },
             "development": {
-              "browserTarget": "3scale-analytics:build:development",
-              "serverTarget": "3scale-analytics:server:development"
+              "browserTarget": "partner-analytics:build:development",
+              "serverTarget": "partner-analytics:server:development"
             }
           },
           "defaultConfiguration": "production"

@@ -1,24 +1,24 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: 3scale-analytics
-  namespace: red-portal
+  name: partner-analytics
+  namespace: partner-analytics
   labels:
-    app: 3scale-analytics
+    app: partner-analytics
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: 3scale-analytics
+      app: partner-analytics
   template:
     metadata:
       labels:
-        app: 3scale-analytics
-        deploymentconfig: 3scale-analytics
+        app: partner-analytics
+        deploymentconfig: partner-analytics
     spec:
       containers:
-        - name: 3scale-analytics
-          image: quay.io/redhat-servicemesh-apim-demo/3scale-analytics:latest
+        - name: partner-analytics
+          image: quay.io/redhat-servicemesh-apim-demo/partner-analytics:latest
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -32,14 +32,21 @@ spec:
             - name: API_GET_STATS
               value: Replace_with_API_Secret
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: 3scale-analytics
-  namespace: red-portal
+  name: partner-analytics
+  namespace: partner-analytics
   labels:
-    app: 3scale-analytics
+    app: partner-analytics
 spec:
   ports:
     - name: 8080-tcp
@@ -47,18 +54,18 @@ spec:
       port: 8080
       targetPort: 8080
   selector:
-    app: 3scale-analytics
+    app: partner-analytics
 ---
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: travels-red-ui
-  namespace: red-portal
+  namespace: partner-analytics
 spec:
   path: /
   to:
     kind: Service
-    name: 3scale-analytics
+    name: partner-analytics
     weight: 100
   port:
     targetPort: 8080-tcp

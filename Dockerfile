@@ -14,7 +14,7 @@ RUN npm install
 COPY --chown=1001:1001 . $HOME
 
 #### generate build --prod
-RUN ng build --configuration=production --output-hashing=none && ng run 3scale-analytics:server:production
+RUN ng build --configuration=production --output-hashing=none && ng run partner-analytics:server:production
 
 # Second stage copies the application to the minimal image
 FROM registry.access.redhat.com/ubi8/nodejs-16-minimal:1

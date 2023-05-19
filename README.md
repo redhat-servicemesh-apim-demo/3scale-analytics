@@ -15,6 +15,6 @@ PORT=8080
 
 ## docker
 
-docker build -t quay.io/redhat-servicemesh-apim-demo/3scale-analytics:latest .
+docker build -t quay.io/redhat-servicemesh-apim-demo/partner-analytics:latest .
 
-docker push quay.io/redhat-servicemesh-apim-demo/3scale-analytics:latest
+docker push quay.io/redhat-servicemesh-apim-demo/partner-analytics:latest

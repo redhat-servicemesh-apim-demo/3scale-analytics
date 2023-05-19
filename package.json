@@ -1,5 +1,5 @@
 {
-  "name": "3scale-analytics",
+  "name": "partner-analytics",
   "version": "0.0.0",
   "description": "Example project from an angular.io guide.",
   "license": "MIT",
@@ -10,10 +10,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run 3scale-analytics:serve-ssr",
+    "dev:ssr": "ng run partner-analytics:serve-ssr",
     "serve:ssr": "node dist/server/main.js",
-    "build:ssr": "ng build && ng run 3scale-analytics:server",
-    "prerender": "ng run 3scale-analytics:prerender"
+    "build:ssr": "ng build && ng run partner-analytics:server",
+    "prerender": "ng run partner-analytics:prerender"
   },
   "private": true,
   "dependencies": {
