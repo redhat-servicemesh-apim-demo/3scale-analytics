@@ -19,9 +19,9 @@ export class AppComponent implements OnInit{
   plans;
   stats;
   updatedValues = {
-    "Green App": {hits:"", value:""},
-    "Red App": {hits:"", value:""},
-    "Blue App": {hits:"", value:""}
+    "Green App": {hits:0, value:0},
+    "Red App": {hits:0, value:0},
+    "Blue App": {hits:0, value:0}
   };
 
 
@@ -75,6 +75,7 @@ export class AppComponent implements OnInit{
 
     let billedAmount = 0
     let pricer = this.alteredPlan;
+    usage = +usage;
     for(var x=0; x < pricer.length; x++){
       if(usage > pricer[x].low && usage > pricer[x].high){
         billedAmount = billedAmount + ((pricer[x].high - pricer[x].low + 1) * pricer[x].rate)
@@ -89,11 +90,11 @@ export class AppComponent implements OnInit{
   private alterPlans() {
     this.plans.pricing_rules.pricing_rule.forEach((plan) => {
       let tempPlan = {
-        rate: plan.cost_per_unit[0],
-        low: plan.min[0]
+        rate: +plan.cost_per_unit[0],
+        low: +plan.min[0]
       }
       if(plan.max[0]!='') {
-          tempPlan["high"] = plan.max[0];
+          tempPlan["high"] = +plan.max[0];
         }
       this.alteredPlan.push(tempPlan)
     })
